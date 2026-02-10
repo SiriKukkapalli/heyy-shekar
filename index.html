@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For You ❤️</title>
+  <title>Just For You ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -28,15 +28,12 @@
     h1 {
       color: #ff4d4d;
       font-size: 32px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      position: relative;
-      margin-bottom: 20px;
+    p {
+      font-size: 22px;
+      margin-bottom: 30px;
     }
 
     button {
@@ -48,55 +45,71 @@
       color: white;
     }
 
-    .accept {
-      background: #4CAF50;
+    .green { background: #4CAF50; }
+    .red { background: #ff4d4d; }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
     }
 
-    .reject {
-      background: #ff4d4d;
-      position: absolute;
-      right: 0;
-    }
-
-    .success {
-      color: #ff4d4d;
-      font-size: 26px;
-      margin-top: 20px;
+    .hidden {
       display: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1 id="title">I love you, Will you be mine forever? 💗</h1>
+<div class="card">
 
-    <div class="buttons" id="buttons">
-      <button class="accept" onclick="accepted()">Accept</button>
-      <button class="reject" onmouseover="moveButton()">Reject</button>
-    </div>
+  <!-- SCREEN 1 -->
+  <div id="screen1">
+    <h1>heyy Shekar</h1>
+    <p>FROM SIRI ❤️</p>
+    <button class="green" onclick="goToScreen2()">I Understand</button>
+  </div>
 
-    <div class="success" id="success">
-      🎉 Yay! You made my life beautiful, love you too 💗✨  
-      <br><br>
-      🥰
+  <!-- SCREEN 2 -->
+  <div id="screen2" class="hidden">
+    <h1>I love you, Will you be mine forever? 💗</h1>
+    <div class="buttons">
+      <button class="green" onclick="goToScreen3()">Accept</button>
+      <button class="red" id="reject" onmouseover="moveReject()">Reject</button>
     </div>
   </div>
 
-  <script>
-    function accepted() {
-      document.getElementById("buttons").style.display = "none";
-      document.getElementById("title").style.display = "none";
-      document.getElementById("success").style.display = "block";
-    }
+  <!-- SCREEN 3 -->
+  <div id="screen3" class="hidden">
+    <h1>🎉 Yay!</h1>
+    <p>
+      You made my life beautiful,<br>
+      love you too 💖✨
+    </p>
+    🥰
+  </div>
 
-    function moveButton() {
-      const btn = document.querySelector('.reject');
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  </script>
+</div>
+
+<script>
+  function goToScreen2() {
+    screen1.classList.add("hidden");
+    screen2.classList.remove("hidden");
+  }
+
+  function goToScreen3() {
+    screen2.classList.add("hidden");
+    screen3.classList.remove("hidden");
+  }
+
+  function moveReject() {
+    const btn = document.getElementById("reject");
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+  }
+</script>
 
 </body>
 </html>
